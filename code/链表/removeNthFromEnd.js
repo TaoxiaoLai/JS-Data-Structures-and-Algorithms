@@ -5,18 +5,5 @@
 // 当删除了倒数第二个结点后，链表变为 1->2->3->5.
 
 function removeNthFromEnd(head, n) {
-    let prehead = new ListNode()
-    prehead.next = head
-    let fast = prehead
-    let slow = prehead
-    while (n !== 0) {
-        fast = fast.next
-        n--
-    }
-    while (fast.next) {
-        fast = fast.next
-        slow = slow.next
-    }
-    slow.next = slow.next.next
-    return prehead.next
+    
 }

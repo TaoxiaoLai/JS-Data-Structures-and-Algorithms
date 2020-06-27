@@ -4,11 +4,10 @@
 // 输入: 1->1->2->3->3
 // 输出: 1->2->3
 
-
 function deleteDuplicates(head) {
     let cur = head
     while (cur !== null && cur.next !== null) {
-        if (cur.val = cur.next.val) {
+        if (cur.val === cur.next.val) {
             cur.next = cur.next.next
         }
         cur = cur.next

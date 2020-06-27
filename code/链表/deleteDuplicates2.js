@@ -3,12 +3,12 @@
 // 只保留原始链表中 没有重复出现的数字。
 // 输入: 1->2->3->3->4->4->5
 // 输出: 1->2->5
-
+ 
 function deleteDuplicates(head) {
     let prehead = new ListNode()
     prehead.next = head
     let cur = prehead
-    while(cur.next !== null && cur.next.next !== null) {
+    while (cur.next !== null && cur.next.next !== null) {
         if (cur.next.val === cur.next.next.val) {
             let x = cur.next.val
             while (cur.next !== null && cur.next.val === x) {
