@@ -4,5 +4,5 @@
 // 输出： true
 
 function cycleList(head) {
-
+    
 }

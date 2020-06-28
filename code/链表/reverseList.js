@@ -3,13 +3,17 @@
 // 输入: 1->2->3->4->5->NULL
 // 输出: 5->4->3->2->1->NULL
 
+// null, 1,   2,   3,   4,   5
+//                          pre  cur  next
 function reverseList(head) {
-    let pre = new ListNode()
+    let pre = null
     let cur = head
-    while (cur !== null) {
+    let next
+    while(cur !== null) {
         next = cur.next
         cur.next = pre
         pre = cur
+        cur = next
     }
     return pre
 }
