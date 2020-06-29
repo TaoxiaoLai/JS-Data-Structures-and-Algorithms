@@ -4,5 +4,12 @@
 // 输出： true
 
 function cycleList(head) {
-    
+    while(head) {
+        if (!head.flag) {
+            head.flag = true
+        } else {
+            return true
+        }
+    }
+    return false
 }

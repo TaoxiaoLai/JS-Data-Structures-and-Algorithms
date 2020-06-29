@@ -5,5 +5,15 @@
 // 你的输出应该是 [1, 1, 4, 2, 1, 1, 0, 0]。
 
 function dailyTemperatures(T) {
-
+    let len = T.length
+    let stack = []
+    let res = (new Array(len)).fill(0)
+    for(let i = 0; i<len; i++) {
+        while(!stack.length && T[satck[stack.length - 1]] <= T[i]) {
+            const top = satck.pop()
+            res[top] = i - top
+        }
+        satck.push(i)
+    }
+    return res
 }
