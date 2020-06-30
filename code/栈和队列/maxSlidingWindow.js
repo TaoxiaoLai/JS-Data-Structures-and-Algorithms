@@ -12,8 +12,11 @@
 // 最大值分别对应：3 3 5 5 6 7
 
 // 双指针+遍历法
-function maxSlidingWindow(nums, k) {
+function maxSlidingWindow1(nums, k) {
 
 }
 
-// 
+// 双端队列法
+function maxSlidingWindow2(nums, k) {
+    
+}

@@ -3,6 +3,10 @@
 // 如果之后都不会升高，请在该位置用 0 来代替。
 // 例如，给定一个列表 temperatures = [73, 74, 75, 71, 69, 72, 76, 73]，
 // 你的输出应该是 [1, 1, 4, 2, 1, 1, 0, 0]。
+// 演示动画: https://www.bilibili.com/video/BV12t4y1274o/
+
+// 
+
 
 function dailyTemperatures(T) {
     let len = T.length

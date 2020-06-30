@@ -5,10 +5,11 @@
 
 function cycleList(head) {
     while(head) {
-        if (!head.flag) {
-            head.flag = true
-        } else {
+        if (head.flag) {
             return true
+        } else {
+            head.flag = true
+            head = head.next
         }
     }
     return false

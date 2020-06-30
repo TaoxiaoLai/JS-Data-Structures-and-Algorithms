@@ -6,6 +6,23 @@
 // 输入: "()[]{}" 输出: true    输入: "{[]}" 输出: true
 // 输入: "([)]" 输出: false
 
-function leftToRight() {
-    
+function leftToRight(s) {
+    const map = {
+        "(": ")",
+        "[": "]",
+        "{": "}"
+    }
+    const len = s.length()
+    let stack = []
+    for(let i=0; i<len; i++) {
+        const ch = s[i]
+        if(ch === "(" || ch === "[" || ch === "{") {
+            stack.push(map[ch])
+        } else {
+            if(!stack.length || stack.pop() !== ch) {
+                return false
+            }
+        }
+    }
+    return !stack.length
 }
