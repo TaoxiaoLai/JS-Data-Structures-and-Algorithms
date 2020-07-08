@@ -5,6 +5,8 @@
 // top() —— 获取栈顶元素。
 // getMin() —— 检索栈中的最小元素。
 
+// [] push pop shift unshift
+
 // 方法一，该方法getMin的时间复杂度为O(n)
 // 初始化一个栈
 function MinStackOne() {
@@ -35,6 +37,8 @@ MinStackOne.prototype.getMin = function() {
     return minVal
 }
 
+// [1, 2]
+// [1]
 
 // 方法二，该方法getMin的时间复杂度为O(1)
 // 初始化栈和一个辅助栈，辅助栈是一个递减栈，该栈的栈顶元素就是最小元素
