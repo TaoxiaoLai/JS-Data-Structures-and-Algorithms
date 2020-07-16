@@ -18,5 +18,5 @@ function maxSlidingWindow1(nums, k) {
 
 // 双端队列法
 function maxSlidingWindow2(nums, k) {
-    
+     
 }
