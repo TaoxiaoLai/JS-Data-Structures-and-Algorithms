@@ -15,6 +15,8 @@
 // 要封装的队列的方法：push popq push popq popq stack1[] => stack2[]
 //                   1, 2   1    3    2    3
 
+// stack1[1,2,3]   stack2[]
+
 /**
  * 初始化构造函数
  */

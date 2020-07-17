@@ -7,6 +7,11 @@
 
 // [] push pop shift unshift
 
+// 1 [3,2,3]
+// 2 [3,2]
+// 1 [3,2]
+// 2 [3,2]
+
 // 方法一，该方法getMin的时间复杂度为O(n)
 // 初始化一个栈
 function MinStackOne() {
