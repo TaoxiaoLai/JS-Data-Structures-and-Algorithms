@@ -13,10 +13,41 @@
 
 // 双指针+遍历法
 function maxSlidingWindow1(nums, k) {
-
+    let len = nums.length
+    let m, n, temp
+    let res = []
+    for (let i=0; i<=len-k; i++) {
+        temp = nums[i]
+        m = i+1
+        n = i+k-1
+        while (m <= n) {
+            if (nums[m] >= temp) {
+                temp = nums[m]
+            }
+            m++
+        }
+        res.push(temp)
+    }
+    return res
 }
+
 
 // 双端队列法
 function maxSlidingWindow2(nums, k) {
-     
+    let len = nums.length
+    let query = []
+    let res = []
+    for (let i=0; i<len; i++) {
+        while (query.length !== 0 || nums[i] >= query[query.length - 1]) {
+            query.pop()
+        }
+        query.push(nums[i])
+        if (i>=k-1) {
+            if (i>=k && query[0] === nums[i-k+1]) {
+                query.shift()
+            }
+            res.push(query[0])
+        }
+    }
+    return res
 }
