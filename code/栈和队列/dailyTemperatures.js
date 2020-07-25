@@ -20,13 +20,15 @@ function dailyTemperatures(T) {
     let res = (new Array(len)).fill(0)
     for(let i = 0; i<len; i++) {
         // 判断递减栈不为空且当前栈顶元素比当前遍历到的元素小
-        while(!stack.length && T[satck[stack.length - 1]] <= T[i]) {
+        while(!stack.length && T[stack[stack.length - 1]] <= T[i]) {
             // 栈顶元素出栈，将索引相减返回到结果数组
-            const top = satck.pop()
+            const top = stack.pop()
             res[top] = i - top
         }
         // 如果栈为空或者递减，当前元素索引入栈
-        satck.push(i)
+        stack.push(i)
     }
     return res
 }
+
+console.log(dailyTemperatures([1,2,3]))

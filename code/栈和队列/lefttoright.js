@@ -19,7 +19,7 @@ function leftToRight(s) {
         "[": "]",
         "{": "}"
     }
-    const len = s.length()
+    const len = s.length
     let stack = []
     for(let i=0; i<len; i++) {
         const ch = s[i]
@@ -36,3 +36,5 @@ function leftToRight(s) {
     // 假设最后一个是左括号,就会返回false;如果都匹配,stack为空,就会返回true
     return !stack.length
 }
+
+console.log(leftToRight('{[()]}'))
