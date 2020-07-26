@@ -49,3 +49,22 @@ function postOrder(root) {
     console.log('当前遍历的结点是：', root.val)
     return
 }
+
+// 层序遍历
+function bfs(root) {
+    let res = []
+    let query = []
+    query.push(root)
+    while(query.length) {
+        let top = query.shift()
+        res.push(top.val)
+        if(top.left) {
+            query.push(top.left)
+        }
+        if(top.right) {
+            query.push(top.right)
+        }
+    }
+    return res
+}
+console.log(bfs(root))
