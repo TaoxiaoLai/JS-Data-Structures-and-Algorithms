@@ -1,4 +1,7 @@
 // 二叉树遍历的迭代实现
+// 
+
+
 
 const root = {
     val: "A",
@@ -83,4 +86,9 @@ function postorderTraversal(root) {
     }
     return res
 }
-console.log(postorderTraversal(root))
+// console.log(postorderTraversal(root))
+
+// 前序遍历
+function preorder(root) {
+
+}

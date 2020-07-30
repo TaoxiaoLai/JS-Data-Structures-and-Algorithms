@@ -50,7 +50,9 @@ function postOrder(root) {
     return
 }
 
-// 层序遍历
+// 层序遍历 —— 遍历的顺序就是一个先进先出的过程，所以要想到队列
+// queue [A] => [B] [B,C] => [C] [C, D, E] => [D, E] [D, E, F]
+// [[A], [B,C], [D,E,F]]
 function bfs(root) {
     let res = []
     let query = []

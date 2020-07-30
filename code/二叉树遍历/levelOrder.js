@@ -30,6 +30,11 @@ const root = {
         }
     }
 }
+
+// queue [A] => [B,C] -> [C] [C, D, E] -> [D, E, F] => [D, E, F] => []
+// [[A], [B,C], [D,E,F]]
+
+
 function levelOrder(root) {
     let res = []
     if (!root) {
@@ -37,13 +42,13 @@ function levelOrder(root) {
     }
     let query = []
     query.push(root)
-    while(query.length) {
+    while(query.length) {  // 有几层就执行几次while
         let level = []
         
         // 关键一步
-        let len = query.length
+        let len = query.length  // len的长度就是每一层一共有几个几点
 
-        for(let i=0; i<len; i++) {
+        for(let i=0; i<len; i++) {  // 每一层有几个结点，就执行几次for
             let top = query.shift()
             level.push(top.val)
             if(top.left) {
