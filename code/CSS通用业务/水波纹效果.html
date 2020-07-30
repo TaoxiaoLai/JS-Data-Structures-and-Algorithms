@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="cicle1"></div>
+        <div class="cicle2"></div>
+        <div class="cicle3"></div>
+    </div>  
+</body>
+
+<style>
+    .wrapper {
+        position: relative;
+    }
+    .cicle1, .cicle2, .cicle3 {
+        width: 200px;
+        height: 200px;
+        border: 2px solid grey;
+        border-radius: 50%;
+        position: absolute;
+        top: 200px;
+        left: 300px;
+        opacity: 0;
+    }
+    .cicle1 {
+        animation: waterAnimation 6s ease-out infinite;
+    }
+    .cicle2 {
+        animation: waterAnimation 6s 2s ease-out infinite;
+    }
+    .cicle3 {
+        animation: waterAnimation 6s 4s ease-out infinite;
+    }
+    @keyframes waterAnimation {
+        from {
+            transform: scale(0);
+            opacity: 0.6;
+        }
+        to {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+</style>
+</html>
