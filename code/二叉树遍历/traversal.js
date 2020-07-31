@@ -87,5 +87,21 @@ function postorderTraversal(root) {
 
 // 前序遍历
 function preorder(root) {
-
+    let res = []
+    if (!root) {
+        return res
+    }
+    let stack = []
+    stack.push(root)
+    while(stack.length) {
+        let top = stack.pop()
+        res.push(top.val)
+        if (top.right) {
+            stack.push(top.right)
+        }
+        if (top.left) {
+            stack.push(top.left)
+        }
+    }
+    return res
 }

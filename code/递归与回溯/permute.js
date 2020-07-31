@@ -13,6 +13,16 @@
 //  [3,2,1]
 // ]
 
+//       root
+//    /   |   \
+//   1    2    3
+//  / \   / \
+// 2   3 1   3
+// |
+// 3
+
+// [1, 3, 2]
+
 function permute(nums) {
     let len = nums.length
     let curr = []
@@ -43,4 +53,4 @@ function permute(nums) {
     return res
 }
 
-console.log(permute([1,2]))
+console.log(permute([1,2,3]))

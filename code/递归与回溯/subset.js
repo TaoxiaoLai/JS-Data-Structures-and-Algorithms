@@ -34,4 +34,19 @@ function subset(nums) {
     return res
 }
 
-console.log(subset([1,2,3]))
+function subset2(nums) {
+    let len = nums.length
+    let cur = []
+    let res = []
+    dfs(0)
+    function dfs(index) {
+        res.push(cur.slice())
+        for (let i=index; i<len; i++) {
+            cur.push(nums[i])
+            dfs(i+1)
+            cur.pop()
+        }
+    }
+    return res
+}
+console.log(subset2([1,2,3]))
