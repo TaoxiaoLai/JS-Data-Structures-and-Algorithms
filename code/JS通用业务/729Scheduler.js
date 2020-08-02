@@ -13,11 +13,12 @@ class Scheduler {
         }
         const p = this.list.shift()     // 任务队列头部出队准备执行
         this.running++                  // 当前执行任务数加1
+        // console.log('count: ', this.running)                 
         p().then(result => {            // 执行出队的任务，执行完之后
             this.running--              // 当前任务执行数减1
             this.run()                  // 递归调用，这样才能将任务队列里面的所有任务执行完
             return result               // 返回任务执行的结果
-        })    
+        })   
     }
     add(promiseCreator) {   // promiseCreator是一个promise函数
         this.list.push(promiseCreator)  // 将要执行的函数全部都存入list执行队列里面
@@ -72,7 +73,7 @@ class Scheduler2 {
 const timout = (time) => new Promise(resolve => {
     setTimeout(resolve, time)
 })
-const scheduler = new Scheduler2(4);
+const scheduler = new Scheduler();
 const addTask = (time, order) => {
     scheduler.add(() => timout(time).then(() => {
         console.log(order);
@@ -82,3 +83,37 @@ addTask(1000, '1')
 addTask(500, '2')
 addTask(300, '3')
 addTask(400, '4')
+
+class Scheduler802 {    // 不熟悉，还有细节错误
+    constructor() {
+        this.list = []
+        this.count = 0
+    }
+    add(promise) {
+        this.list.push(promise)
+        this.run()
+    }
+    run() {
+        // 忘记写边界条件
+        if(this.list.length === 0 || this.count === 2) {
+            return
+        }
+        // 判断完边界条件可以直接进行下一步
+        let p = this.list.shift()
+        this.count++
+        p().then(result => {    // 注意要写cur()，因为要执行，同时要有result，因为要返回执行结果
+            this.count--
+            this.run()
+            return result
+        })
+        // 不正确的写法
+        if(this.list.length !== 0 && this.count < 2) {
+            let cur = this.list.shift
+            this.count++
+            cur().then(result => {      
+                this.count--
+            })
+            this.run()
+        }
+    }
+}

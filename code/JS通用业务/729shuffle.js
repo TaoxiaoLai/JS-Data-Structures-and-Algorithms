@@ -12,3 +12,14 @@ function shuffle(array) {
 }
 
 console.log(shuffle([1,2,3,4,5,6]))
+
+function shuffle802(array) {    // 一般
+    let len = array.length
+    for (let i=0; i<len; i++) {
+        let random = Math.floor(Math.random() * (len-1))
+        let x = array[i]
+        array[i] = array[random]
+        array[random] = x
+    }
+    return array
+}

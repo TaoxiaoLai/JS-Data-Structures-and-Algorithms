@@ -29,4 +29,29 @@ function sortVersion(arr) {
     return arr
 }
 const arr = ['1.45.0','1.5','6','3.3.3.3.3.3.3']
-console.log(sortVersion(arr))
+console.log(sortVersion802(arr))
+
+function sortVersion802(arr) {          // 一般，出现了一处细节错误
+    function compareString(a, b) {
+        let arr1 = a.split('.')
+        let arr2 = b.split('.')
+        let len = arr1.length > arr2.length? arr2.length : arr1.length
+        for(let i=0; i<len; i++) {
+            if (arr1[i] == arr2[i]) continue       // 一定要加这句！！！
+            if (parseInt(arr1[i]) > parseInt(arr2[i])) {
+                return a
+            } else {
+                return b
+            }
+        }
+    }
+    let len = arr.length
+    for (let i=0; i<len; i++) {
+        for (let j=0; j<len-1; j++) {
+            if (compareString(arr[j], arr[j+1]) == arr[j]) {
+                [arr[j], arr[j+1]] = [arr[j+1], arr[j]]
+            }
+        }
+    }
+    return arr
+}

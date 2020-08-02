@@ -12,3 +12,13 @@ function debounce(fn, wait) {
         timer = setTimeout(fn, wait)
     }
 }
+
+function debounce802(fn, wait) {    // 不熟
+    let timer = null
+    return function() {     // 返回一个函数，这样通过闭包才能取到timer
+        if(timer !== null) {    // 判断存在，存在就清除，防抖是在setTimeout外面就要清除timer，这样才能保证只触发最后一次
+            clearTimeout(timer)
+        }
+        timer = setTimeout(fn, wait)    // 设置timer
+    }
+}
