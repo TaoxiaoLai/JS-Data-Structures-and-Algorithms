@@ -19,7 +19,8 @@
 </body>
 
 <style>
-    html, body {
+    /* 这一步很重要，要让整个页面充满 */
+    html, body {        
         height: 100%;
     }
     /* 方法1：使用flex实现 */
@@ -46,6 +47,7 @@
         background-color: goldenrod;
     }
     .contain {
+        /* 实现的关键点1 */
         min-height: calc(100% - 100px);
         box-sizing: border-box;
         padding-bottom: 100px;
@@ -53,6 +55,7 @@
     }
     .footer {
         height: 100px;
+        /* 实现的关键点2 */
         margin-top: -100px;
         background-color: goldenrod;
     }

@@ -37,3 +37,36 @@ class easyPromise {
 
 var p = new easyPromise(function(resolve,reject){resolve(1)}); 
 p.then(function(x){console.log(x)})
+
+class easyPromise804 {      // 比较熟悉
+    constructor(executor) {
+        this.state = 'pending'
+        this.value = undefined
+        this.reason = undefined
+        let resolve = result => {
+            if (this.state === 'pending') {
+                this.state = 'fulfilled'
+                this.value = result
+            }
+        }
+        let reject = reason => {
+            if (this.state === 'pending') {
+                this.state = 'rejected'
+                this.reason = reason
+            }
+        }
+        try {
+            executor(resolve, reject)
+        } catch(err) {
+            reject(err)
+        }
+    }
+    then(onFulfilled, onRejected) {
+        if (this.state === 'fulfilled') {
+            onFulfilled(this.value)
+        }
+        if (this.state === 'rejected') {
+            onRejected(this.reason)
+        }
+    }
+}

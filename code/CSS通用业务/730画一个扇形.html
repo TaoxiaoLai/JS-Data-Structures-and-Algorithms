@@ -13,6 +13,7 @@
 </body>
 
 <style>
+    /* 使用befor和after，之后before和after分别使用clip：react()进行裁剪成半圆 */
     .sector {
         width: 100px;
         height: 100px;
@@ -25,8 +26,11 @@
         width: 100px;
         height: 100px;
         border-radius: 50%;
-        position: absolute;
         background-color: yellow;
+        /* 实现的三个关键点：绝对定位、裁剪、旋转 */
+        position: absolute;
+        /* clip只在设置了绝对定位和固定定位时有用 */
+        /* rect的参数：top、bottom指的是从顶部到top、bottom，left、right指的是从左边到left、right；所以下面这个是个右半圆 */
         clip: rect(0, 100px, 100px, 50px);
         transform: rotate(45deg);
     }
@@ -35,8 +39,8 @@
         width: 100px;
         height: 100px;
         border-radius: 50%;
-        position: absolute;
         background-color: blue;
+        position: absolute;
         clip: rect(0, 50px, 100px, 0);
         transform: rotate(-45deg);
     }
