@@ -22,4 +22,21 @@ function coinChange(coins, amount) {
     }
     return f[amount]
 }
-console.log(coinChange([1,2,5], 11))
+console.log(coinChange806([1,2,5], 11))
+
+function coinChange806(coins, amount) {
+    let f = []
+    f[0] = 0
+    for (let i=1; i<=amount; i++) {
+        f[i] = Infinity     // 注意这里设为无穷大
+        for (let j=0; j<coins.length; j++) {
+            if (i - coins[j] >= 0) {        // 注意要进行这步判断
+                f[i] = Math.min(f[i], f[i-coins[j]]+1)
+            }
+        }
+    }
+    if (f[amount] === Infinity) {
+        return -1
+    }
+    return f[amount]
+}

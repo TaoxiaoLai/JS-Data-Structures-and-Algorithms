@@ -54,3 +54,17 @@ let p3 = new Promise(function (resolve, reject) {
 promiseAll([p3, p1, p2]).then(res => {
     console.log(res) // [3, 1, 2]
 })
+
+function promiseAll805(promises) {
+    if (promises instanceof Array === false) {
+        throw new TypeError('arguments must be array')
+    }
+    return new Promise((resolve, reject) => {
+        let result = []
+        let count = 0
+        for (let i=0; i<promises.length; i++) {
+            let p = Promise.resolve(promises[i])
+            
+        }
+    })
+}

@@ -8,6 +8,15 @@ function oddEven() {
         console.log(2)
     }
 }
-oddEven()
-oddEven()
-oddEven()
+oddEven805()
+oddEven805()
+oddEven805()
+
+function oddEven805() {     // 不熟
+    oddEven805.count = oddEven805.count? oddEven805.count+1 : 1     // 在函数里面用一个属性来计数
+    if (oddEven805.count % 2 != 0) {
+        console.log(1)
+    } else {
+        console.log(2)
+    }
+}
