@@ -19,5 +19,14 @@ function getAllKeys(obj, keyArr=[]) {
     }
     return keyArr
 }
+console.log(getAllKeys807(obj))
 
-console.log(getAllKeys(obj))
+function getAllKeys807(obj, keyArr=[]) {    // 注意要写成obj[key]
+    for(let key in obj) {
+        keyArr.push(key)
+        if(obj[key] instanceof Object === true) {
+            getAllKeys807(obj[key], keyArr)
+        }
+    }
+    return keyArr
+}

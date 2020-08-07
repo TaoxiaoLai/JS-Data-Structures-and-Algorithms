@@ -20,7 +20,7 @@ function getMonthList(start, end) {
     return arr
 }
 
-console.log(getMonthList('2019-01', '2020-08'))
+// console.log(getMonthList('2019-01', '2020-08'))
 
 function getDateList(start, end) {
     function getDate(dateStr) {
@@ -41,4 +41,24 @@ function getDateList(start, end) {
     arr.shift()
     return arr
 }
-console.log(getDateList('2019-02-01', '2019-03-01'))
+console.log(getDateList807('2019-02-01', '2019-03-01'))
+
+function getDateList807(start, end) {
+    function getDate(dateStr) {
+        let dateArr = dateStr.split('-')
+        let date = new Date(parseInt(dateArr[0]), parseInt(dateArr[1])-1, parseInt(dateArr[2]))
+        return date
+    }
+    let startDate = getDate(start)
+    let endDate = getDate(end)
+    let list = []
+    while(startDate < endDate) {
+        let year = startDate.getFullYear()
+        let month = startDate.getMonth()+1<10? '0'+(startDate.getMonth()+1) : startDate.getMonth()+1
+        let day = startDate.getDate()<10? '0'+startDate.getDate() : startDate.getDate()
+        list.push(`${year}-${month}-${day}`)
+        startDate.setDate(startDate.getDate()+1)
+    }
+    list.shift()
+    return list
+}
