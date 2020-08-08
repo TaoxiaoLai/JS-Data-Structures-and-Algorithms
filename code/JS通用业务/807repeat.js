@@ -41,3 +41,20 @@ function sleep807(func, wait, args) {
         }, wait)
     })
 }
+
+function repeat808(func, time, wait) {
+    return async function() {
+        for(let i=0; i<time; i++) {
+            await sleep(func, wait, arguments)
+        }
+    }
+}
+
+function sleep808(func, wait, args) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            func.apply(this, args)
+            resolve()
+        }, wait)
+    })
+}

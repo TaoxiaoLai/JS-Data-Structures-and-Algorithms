@@ -34,7 +34,7 @@ function baseSack(weights, values, W) {
     }
     return f[n-1][W]
 }
-console.log('01背包: ', improveBack2([2,2,6,5,4],[6,3,5,4,6], 5))
+// console.log('01背包: ', improveBack2([2,2,6,5,4],[6,3,5,4,6], 5))
 
 // 优化1：合并循环
 function improveBack1(weights, values, W) {
@@ -79,3 +79,66 @@ function improveBack2(weights, values, W) {
     }
     return f[n-1][W]
 }
+
+// 打印出所选物品
+function backChose(weights, values, W) {
+    let n = weights.length
+    let f = []
+    f[-1] = new Array(W+1).fill(0)
+    for(let i=0; i<n; i++) {
+        f[i] = []
+        for(let j=0; j<=W; j++) {
+            if(j < weights[i]) {
+                f[i][j] = f[i-1][j]
+            } else {
+                f[i][j] = Math.max(f[i-1][j], f[i-1][j-weights[i]]+values[i])
+            }
+        }
+    }
+    j = W
+    let w = 0   // 当前所选物品的重量
+    let chose = []      // 当前已选的物品
+    for(let i=n-1; i>=0; i--) {
+        if(f[i][j] > f[i-1][j]) {
+            chose.push(i)
+            w += weights[i]
+            j = j - weights[i]
+        }
+    }
+    return [f[n-1][W], chose.reverse(), w]
+}
+
+// console.log('01背包选择: ', backChose([2,2,6,5,4],[6,3,5,4,6], 5))
+
+// 使用滚动数组优化，因为当前的状态只和它前面一行的状态有关，因此不需要一个二维数组，只需要两个数组然后滚动变化就可以
+function improveBack3(weights, values, W) {
+    let n = weights.length
+    let f = [new Array(W+1).fill(0), []]
+    let now = 1, last
+    for(let i=0; i<n; i++) {
+        for(let j=0; j<=W; j++) {
+            if(j < weights[i]) {
+                f[now][j] = f[1-now][j]
+            } else {
+                f[now][j] = Math.max(f[1-now][j], f[1-now][j-weights[i]]+values[i])
+            }
+        }
+        last = f[now]
+        now = 1-now
+    }
+    return last[W]
+}
+// console.log('01背包选择: ', improveBack3([2,2,6,5,4],[6,3,5,4,6], 5))
+
+// 优化成一维数组（未很理解，记住要点，内层循环倒序，到j>=weights[i]为止）
+function improveBack4(weights, values, W) {
+    let n = weights.length
+    let f = new Array(W+1).fill(0)  // 注意这边要全部填0
+    for(let i=0; i<n; i++) {
+        for(let j=W; j>=weights[i]; j--) {
+            f[j] = Math.max(f[j], f[j-weights[i]]+values[i])
+        }
+    }
+    return f[W]
+}
+console.log('01背包选择: ', improveBack4([2,2,6,5,4],[6,3,5,4,6], 5))
