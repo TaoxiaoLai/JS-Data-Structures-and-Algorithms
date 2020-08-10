@@ -1,28 +1,30 @@
 // 输入：
 let arr = [
     {
-        id: 2,
-        parent: 1
+        id: 'b',
+        parent: 'a'
     },{
-        id: 1,
+        id: 'a',
         parent: null
     },{
-        id: 3,
-        parent: 2
+        id: 'c',
+        parent: 'b'
     }
 ]
+// console.log(arr[0]['id'])
+// console.log(arr[0].id)
 
 // 输出：
 let obj = {
     obj: {
-        id: 1,
+        id: 'a',
         parent: null,
         child: {
-            id: 2,
-            parent: 1,
+            id: 'b',
+            parent: 'a',
             child: {
-                id: 3,
-                parent: 2
+                id: 'c',
+                parent: 'b'
             }
         }
     }
@@ -30,23 +32,22 @@ let obj = {
 
 function transformArr(arr) {
     let len = arr.length
-    let obj = {}
-    let visited = {}
+    let idObj = {}
+    let resObj = {}
     for(let i=0; i<len; i++) {
-        if(visited[arr[i].id] == 1) {
+        idObj[arr[i].id] = arr[i]
+    }
+    for(let key in idObj) {
+        if(idObj[key].parent === null) {
+            resObj = {
+                obj: idObj[key]
+            }
             continue
-        }
-        if(arr[i].parent === null) {
-            obj = arr[i]
-            visited[arr[i].id] = 1
         } else {
-            let x = arr[i].parent
-            arr[x].child = arr[i]
-            obj = arr[x]
-            visited[arr[i].id] = 1
-            visited[arr[x].id] = 1
+            let parentKey = idObj[key].parent
+            idObj[parentKey].child = idObj[key]
         }
     }
-    return obj
+    return resObj.obj.child
 }
 console.log(transformArr(arr))
