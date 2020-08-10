@@ -64,7 +64,15 @@ function promiseAll805(promises) {
         let count = 0
         for (let i=0; i<promises.length; i++) {
             let p = Promise.resolve(promises[i])
-            
+            p.then(res => {
+                result[i] = res
+                count++
+                if(count === len) {
+                    return resolve(result)
+                }
+            }, err => {
+                reject(err)
+            })
         }
     })
 }
