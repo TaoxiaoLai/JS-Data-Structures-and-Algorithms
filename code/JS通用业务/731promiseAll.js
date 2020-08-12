@@ -10,6 +10,7 @@
 // 实现要点：1、判断参数是数组 2、返回是promise对象 3、所有成功才成功 4、一个失败就失败
 
 
+
 function promiseAll(promises) {
     // 判断参数是否是数组
     if (!Array.isArray(promises)) {
