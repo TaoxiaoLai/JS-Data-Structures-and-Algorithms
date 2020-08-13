@@ -1,20 +1,20 @@
-// function change(len, str) {
-//     let midle = Math.floor(len/2)
-//     let str1 = str.slice(0, midle)
-//     let str2
-//     len%2 === 0? str2=str.slice(midle) : str2=str.slice(midle+1)
-//     let arr1 = str1.split('')
-//     let arr2 = str2.split('').reverse()
-//     let count = 0
-//     for(let i=0; i<arr1.length; i++) {
-//         if(arr1[i] == arr2[i]) {
-//             continue
-//         } else {
-//             count++
-//         }
-//     }
-//     return count
-// }
+function change(len, str) {
+    let midle = Math.floor(len/2)
+    let str1 = str.slice(0, midle)
+    let str2
+    len%2 === 0? str2=str.slice(midle) : str2=str.slice(midle+1)
+    let arr1 = str1.split('')
+    let arr2 = str2.split('').reverse()
+    let count = 0
+    for(let i=0; i<arr1.length; i++) {
+        if(arr1[i] == arr2[i]) {
+            continue
+        } else {
+            count++
+        }
+    }
+    return count
+}
 
 // let count = 0
 // let n
@@ -29,7 +29,7 @@
 // }
 // print(change(n, str))
 
-// console.log(change(5, 'abcba'))
+console.log(change(7, 'abccbba'))
 
 // function colorCount(n, m) {
 //     if (n == m == 1) {

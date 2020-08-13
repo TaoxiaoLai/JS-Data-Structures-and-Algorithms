@@ -1,6 +1,9 @@
+// shopee
+
+// 版本号查询返回
 function findVersion(arr, str) {
     let x = str[0]
-    function sort(str1, str2, type) {
+    function sort(str1, str2) {
         let arr1 = str1.split('.')
         let arr2 = str2.split('.')
         for(let i=0; i<arr1.length; i++) {
@@ -44,14 +47,13 @@ function findVersion(arr, str) {
     }
 }
 
+// let arr = ["1.2.3","2.0.1","2.1.1","1.2.4"]
+// let str = "^1.2.1"
+// console.log(str[0])
+// console.log(findVersion(arr, str))
 
 
-let arr = ["1.2.3","2.0.1","2.1.1","1.2.4"]
-let str = "^1.2.1"
-console.log(str[0])
-
-console.log(findVersion(arr, str))
-
+// 仅反转字母
 function reverseOnlyLetters( s ) {
     let arr = s.match(/[a-zA-Z]/g)
     if(arr === null) return s 
@@ -61,9 +63,10 @@ function reverseOnlyLetters( s ) {
     })
     return reverseStr
 }
-
 console.log(reverseOnlyLetters('ab-cde'))
 
+
+// 统计重复字符返回
 function compressString( str ) {
     let arr = str.split('')
     for(let i=0; i<arr.length-1; i++) {
