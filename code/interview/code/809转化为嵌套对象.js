@@ -48,6 +48,6 @@ function transformArr(arr) {
             idObj[parentKey].child = idObj[key]
         }
     }
-    return resObj.obj.child
+    return resObj
 }
 console.log(transformArr(arr))

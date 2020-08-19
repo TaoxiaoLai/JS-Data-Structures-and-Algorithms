@@ -51,9 +51,9 @@ function b(s, k) {
     return arrStr.join('')
 }
 
-let s = '16485679'
-let k = 4
-console.log(b2(s, k))
+// let s = '16485679'
+// let k = 4
+// console.log(b2(s, k))
 //b2(s, k)
 
 // let s = read_line()
@@ -78,3 +78,12 @@ function b2(s, k) {
     return s
 }
 
+
+
+//Function.prototype.a = function() { console.log('Fun_prototype: a()') }
+Object.prototype.a = function() { console.log('Obj_prototype: a()') }
+
+Object.a()
+
+console.log(Object.a === Object.prototype.a)
+console.log(Object.a === Object.__proto__.a)
