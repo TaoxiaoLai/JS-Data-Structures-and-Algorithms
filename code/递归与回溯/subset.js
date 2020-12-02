@@ -20,9 +20,7 @@ function subset(nums) {
     let len = nums.length
     let res = []
     let subset = []
-
     dfs(0)
-
     function dfs(index) {
         res.push(subset.slice())
         for (let i=index; i<len; i++) {
